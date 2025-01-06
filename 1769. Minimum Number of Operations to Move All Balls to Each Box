@@ -1,0 +1,22 @@
+class Solution {
+    public int[] minOperations(String boxes) {
+        int len = boxes.length();
+        int [] array = new int[len];
+        int sum;
+        for(int i=0;i<len;i++){
+            sum=0;
+            for(int j=0;j<len;i++){
+                if(boxes.charAt(j)=='1' && i!=j){
+                    if(j<i){
+                        sum+=i-j;
+                    }
+                    else{
+                        sum+=j-i;
+                    }
+                }
+            }
+            array[i]=sum;
+        }
+        return array;
+    }
+}
