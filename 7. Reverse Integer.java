@@ -1,19 +1,14 @@
 class Solution {
     public int reverse(int x) {
-        int r=(x<0)? (-1):(1);
-        x*=r;
-        int rev=0;
-        while(x>0){
-            int deg=x%10;
-            if(rev<=(Integer.MAX_VALUE-deg)/10){
-                rev=rev*10+deg;
-            }
-            else{
+        int rev=0,deg;
+        while(x!=0){
+            deg=x%10;
+            if(rev>(Integer.MAX_VALUE)/10 || rev<(Integer.MIN_VALUE)/10){
                 return 0;
             }
+            rev=rev*10+deg;
             x/=10;
         }
-        rev*=r;
         return rev;
         
     }
