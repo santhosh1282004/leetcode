@@ -1,27 +1,23 @@
-import java.util.*;
-public class Solution{
+import java.util.Arrays;
+
+class Solution {
     public int countPrimes(int n) {
-        ArrayList <Integer> list=new ArrayList<>();
-        if(n<3){
-            return 0;
-        }
-        else{
-            boolean c;
-            int count=1;
-            for(int i=3;i<n;i+=2){
-                c=true;
-                for(int j:list){
-                    if(i%j==0){
-                        c=false;
-                        break;
-                    }
-                }
-                if(c){
-                    count++;
-                    list.add(i);
+        if (n <= 2) return 0;
+
+        boolean[] prime = new boolean[n];
+        Arrays.fill(prime, true);
+
+        int res = 0;
+        for (int i = 2; i*i< n; ++i) {
+            if (prime[i]) {
+                
+                for (int j = i * i; j < n; j += i) {
+                    prime[j] = false;
                 }
             }
-            return count;
         }
+         for (int i = 2; i < n; i++) {
+            if (prime[i]) ++res;
+          } return res;
     }
 }
