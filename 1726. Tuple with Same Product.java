@@ -1,20 +1,15 @@
 class Solution {
     public int tupleSameProduct(int[] nums) {
         HashMap <Integer,Integer> map=new HashMap<>();
-        int len=nums.length;
-        for(int i=0;i<len;i++){
-            for(int j=i+1;j<len;j++){
+        for(int i=0;i<nums.length;i++){
+            for(int j=i+1;j<nums.length;j++){
                 int n=nums[i]*nums[j];
-                if(map.containsKey(n)){
-                    map.put(n,map.get(n)+1);
-                }else{
-                    map.put(n,1);
-                }
+                map.merge(n, 1, Integer::sum);
             }
         }
         int sum=0;
-        for(Map.Entry<Integer,Integer> i:map.entrySet()){
-            sum+=(((i.getValue()-1)*i.getValue())/2)*8;
+        for(int i:map.values()){
+            sum+=(((i-1)*i)/2)<<3;
         }
         return sum;
     }
