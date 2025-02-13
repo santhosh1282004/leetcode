@@ -1,6 +1,6 @@
 class Solution {
     public String convert(String s, int numRows) {
-        if(numRows==1)return s;
+        if(numRows==1 || numRows >= s.length())return s;
         String str="";
         int x=(numRows-1)*2;
         int y=0;
