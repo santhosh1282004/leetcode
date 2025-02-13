@@ -1,13 +1,14 @@
 class Solution {
     public String convert(String s, int numRows) {
-        if(numRows==1 || numRows >= s.length())return s;
+        int len=s.length();
+        if(numRows==1 || numRows >= len)return s;
         String str="";
         int x=(numRows-1)*2;
         int y=0;
         for(int i=0;i<numRows;i++){
             int j=i;
             boolean b=true;
-            while(j<s.length()){
+            while(j<len){
                 str=str+s.charAt(j);
                 if(y==0 || x==0){
                     j+=(numRows-1)*2;
