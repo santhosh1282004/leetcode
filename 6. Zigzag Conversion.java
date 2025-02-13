@@ -4,26 +4,16 @@ class Solution {
         if(numRows==1 || numRows >= len)return s;
         String str="";
         int x=(numRows-1)*2;
-        int y=0;
         for(int i=0;i<numRows;i++){
             int j=i;
-            boolean b=true;
             while(j<len){
                 str=str+s.charAt(j);
-                if(y==0 || x==0){
-                    j+=(numRows-1)*2;
+                int y=x+j-(i*2);
+                if(i>0 && i<numRows-1 && y<len){
+                    str=str+s.charAt(y);
                 }
-                else if(b){
-                    j+=x;
-                    b=false;
-                }
-                else{
-                    j+=y;
-                    b=true;
-                }
+                j+=x;
             }
-            x-=2;
-            y+=2;
         }
         return str;
     }
